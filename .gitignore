@@ -1,0 +1,11 @@
+# IDEs and Editors
+.vscode/
+.idea/
+
+# OS and temporary files
+*~
+*.swp
+*.swo
+
+# Environment variables
+.env

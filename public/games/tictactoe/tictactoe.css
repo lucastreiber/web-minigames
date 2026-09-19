@@ -1,5 +1,6 @@
 body{
-    background-color:rgb(186, 223, 255);
+    background-image: url('../../assets/fond.webp');
+    background-repeat: repeat;
 }
 
 header{
@@ -12,7 +13,41 @@ header{
     border-radius: 20px;
 }
 
-.tictactoe{
+main{
     display: flex;
     justify-content: center;
+    margin-top: 40px;
+}
+
+.tictactoe{
+    display: grid;
+    grid-template-columns: repeat(3, 250px);
+    grid-template-rows: repeat(3, 250px);
+    grid-gap: 10px;
+    padding: 10px;
+
+    background-color: black;
+    border-radius: 20px;
+    
+}
+
+.cell{
+    background-color: white;
+    height: 100%;
+}
+
+.cell:first-child { 
+    border-top-left-radius: 10px; 
+}
+
+.cell:nth-child(3) { 
+    border-top-right-radius: 10px;
+}
+
+.cell:nth-child(7) { 
+    border-bottom-left-radius: 10px;
+}
+
+.cell:last-child { 
+    border-bottom-right-radius: 10px;
 }

@@ -54,10 +54,58 @@ main{
 
 #victory-line {
     position: absolute;
-    background-color: red; /* Mets la couleur de ton choix */
-    z-index: 10; /* S'assure que le trait passe au-dessus des images */
+    background-color: red;
+    z-index: 10;
     border-radius: 5px;
     
-    /* On utilise 'all' pour que width ou height s'animent de la même façon */
     transition: all 0.5s ease-in-out;
+}
+
+#modal-victory {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    
+    transform: scale(0.1);
+    
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#modal-victory.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+#modal-victory.active .modal-content {
+    transform: scale(1);
+}
+
+#replay {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background-color: #333;
+    color: white;
 }

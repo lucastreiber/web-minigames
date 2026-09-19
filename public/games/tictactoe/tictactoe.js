@@ -1,3 +1,30 @@
+function endPopUp(winner){
+    let color = "white";
+    let name;
+
+    if(winner === "X"){
+        color = "red";
+        name = "Croix";
+    }else if(winner === "O"){
+        color = "aqua";
+        name = "Rond";
+    }
+
+    let modal = document.getElementById("modal-victory");
+    let texteVictory = document.getElementById("texte-victory");
+
+    if(winner === "D"){
+        texteVictory.innerText = "Egalité !";
+    }else{
+        texteVictory.innerText = "Le Joueur " + name + " a gagné !";
+    }
+    texteVictory.parentElement.style.backgroundColor = color;
+
+    setTimeout(() => {
+        modal.classList.add("active");
+    }, 600);
+}
+
 //Crée juste le line applique son style et l'ajoute dans le conteneur
 function createLine(){
     let line = document.createElement("div");
@@ -44,11 +71,20 @@ function horizontalLine(row){
     }, 50);
 }
 
-
+function draw(){
+    let i=0;
+    while(i<9){
+        if(tictactoe[i] === "-"){
+            return false;
+        }
+        i++;
+    }
+    return true;
+}
 
 
 /*Renvoie le gagnant s'il y en a un (soit X, soit O) 
- et s'il n'y en a pas renvoie - */
+ et s'il n'y en a pas renvoie - sauf en cas d'égalité où il renvoit D */
 function whoIsWining(indice){
     //Ligne
     let line = Math.floor(indice/3);
@@ -78,6 +114,11 @@ function whoIsWining(indice){
         return tictactoe[indice];
     }
 
+    //égalité
+    if(draw()){
+        return "D";
+    }
+
     return "-";
 }
 
@@ -99,7 +140,9 @@ function selected(event){
         }
         let winner = whoIsWining(id);
         
-
+        if(winner !== "-"){
+            endPopUp(winner);
+        }
     }
 }
 
@@ -118,4 +161,10 @@ let images = document.querySelectorAll('.tictactoe');
 
 images.forEach((img) =>{
     img.addEventListener('click',selected);
+});
+
+let replayButton = document.getElementById("replay");
+
+replayButton.addEventListener("click", function() {
+    location.reload();
 });

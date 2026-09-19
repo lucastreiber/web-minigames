@@ -28,7 +28,7 @@ main{
 
     background-color: black;
     border-radius: 20px;
-    
+    position: relative;
 }
 
 .cell{
@@ -50,4 +50,14 @@ main{
 
 .cell:last-child { 
     border-bottom-right-radius: 10px;
+}
+
+#victory-line {
+    position: absolute;
+    background-color: red; /* Mets la couleur de ton choix */
+    z-index: 10; /* S'assure que le trait passe au-dessus des images */
+    border-radius: 5px;
+    
+    /* On utilise 'all' pour que width ou height s'animent de la même façon */
+    transition: all 0.5s ease-in-out;
 }

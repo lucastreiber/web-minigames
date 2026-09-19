@@ -1,3 +1,4 @@
+//Fait un popup indiquant qui est le gagnant s'il y en a un
 function endPopUp(winner){
     let color = "white";
     let name;
@@ -44,11 +45,11 @@ function verticalelLine(colonne){
     line.style.top = "0%";
     line.style.left = (16 + 33 * colonne) + "%";
     
-    // État initial (État A)
+    // État initial
     line.style.width = "8px"; // L'épaisseur de ta ligne verticale
     line.style.height = "0%"; // La hauteur part de zéro
 
-    // Animation vers l'état final (État B)
+    // Animation vers l'état final
     setTimeout(() => {
         line.style.height = "100%"; 
     }, 50); // 50ms laisse le temps au navigateur d'appliquer le 0% d'abord
@@ -61,13 +62,41 @@ function horizontalLine(row){
     line.style.top = (16 + 33 * row) + "%";
     line.style.left = "0%";
     
-    // État initial (État A)
+    // État initial
     line.style.height = "8px"; // L'épaisseur de ta ligne horizontale
     line.style.width = "0%";   // La largeur part de zéro
 
-    // Animation vers l'état final (État B)
+    // Animation vers l'état final
     setTimeout(() => {
         line.style.width = "100%"; 
+    }, 50);
+}
+
+function diagonalLine(direction){
+    let line = createLine();
+    
+    // État initial (identique pour les deux diagonales)
+    line.style.height = "8px"; 
+    line.style.width = "0%";
+    
+    //De Haut-Gauche vers Bas-Droite (cases 0, 4, 8)
+    if (direction === 1) {
+        line.style.top = "0%";
+        line.style.left = "0%";
+        line.style.transformOrigin = "top left"; // Point d'ancrage en haut à gauche
+        line.style.transform = "rotate(45deg)";
+    }
+    //De Bas-Gauche vers Haut-Droite (cases 6, 4, 2) 
+    else if (direction === 2) {
+        line.style.top = "100%"; // On part tout en bas
+        line.style.left = "0%";
+        line.style.transformOrigin = "bottom left"; // Point d'ancrage en bas à gauche
+        line.style.transform = "rotate(-45deg)";
+    }
+
+    // Animation vers l'état final (~141% pour atteindre l'autre bout du carré)
+    setTimeout(() => {
+        line.style.width = "141.4%"; 
     }, 50);
 }
 
@@ -106,12 +135,14 @@ function whoIsWining(indice){
     }
 
     //diagonale \
-    if(indice === 0 || indice === 4 || indice === 8){
-        return tictactoe[indice];
+    if(tictactoe[0] === tictactoe[4] && tictactoe[0] === tictactoe[8] && tictactoe[0] !== "-"){
+        diagonalLine(1);
+        return tictactoe[0];
     }
     //diagonale /
-    if(indice === 6 || indice === 4 || indice === 2){
-        return tictactoe[indice];
+    if(tictactoe[6] === tictactoe[4] && tictactoe[6] === tictactoe[2] && tictactoe[6] !== "-"){
+        diagonalLine(2);
+        return tictactoe[6];
     }
 
     //égalité

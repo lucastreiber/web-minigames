@@ -1,0 +1,30 @@
+body{
+    background-image: url('../assets/fond.webp');
+    background-repeat: repeat;
+}
+
+header{
+    display: flex;
+    justify-content : center;
+    font-size: 30px;
+    
+    background-color: orange;
+    border: 4px solid black;
+    border-radius: 20px;
+}
+
+header>button{
+    max-height: 80px;
+    max-width: 80px;
+}
+
+header>button>image{
+    max-height: 80px;
+    max-width: 80px;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}

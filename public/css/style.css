@@ -4,27 +4,49 @@ body{
 }
 
 header{
-    display: flex;
-    justify-content : center;
-    font-size: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    
     
     background-color: orange;
     border: 4px solid black;
     border-radius: 20px;
 }
 
-header>button{
-    max-height: 80px;
-    max-width: 80px;
+header > h1{
+    justify-self: center;
+    font-size: 60px;
 }
 
-header>button>image{
-    max-height: 80px;
-    max-width: 80px;
+header > a {
+    height: 150px; 
+    width: 150px;
+}
+
+header > a > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
 }
 
 main{
     display: flex;
     justify-content: center;
     margin-top: 40px;
+}
+
+.games{
+    width: 90%;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-content: center;
+    gap: 1em;
+}
+
+.games img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
 }

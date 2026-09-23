@@ -1,22 +1,35 @@
 body{
     background-image: url('../assets/fond.webp');
     background-repeat: repeat;
+
+    margin: 0;
+    padding: 0;
+
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+@font-face {
+    font-family: "RetroGaming"; 
+    src: url('../assets/RetroGaming.ttf') format('truetype'); 
 }
 
 header{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 150px 1fr 150px;
+    grid-template-rows: 150px;
     align-items: center;
     
-    
-    background-color: orange;
-    border: 4px solid black;
-    border-radius: 20px;
+    background-color: rgb(7, 165, 213);
+    border-bottom: 4px solid black;
 }
 
 header > h1{
+    color: white;
     justify-self: center;
-    font-size: 60px;
+    font-size: clamp(30px, 6vw, 90px);
+    font-family: "RetroGaming";
+    font-weight: 100;
 }
 
 header > a {
